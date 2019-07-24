@@ -1,6 +1,10 @@
 # docker-ftpsmb
-> Docker image from base Ubuntu 18.04 that contains basic firewall, ftp (vsftpd) and samba (v4) servers.
+> Docker image from base Ubuntu 18.04 that contains basic firewall (ufw), ftp (proftpd) and samba (v4) servers.
 > The purpose is an anonymoius ftp/smb server to store and distribute some files.
+
+# Notes on the firewall
+1. The containers need to be ran as priviledged for the firewall to work
+2. The firewall is useless in the context of Kubernetes deployment
 
 # Sample configs
 1. The `etc` directory contains some sample config files for:
