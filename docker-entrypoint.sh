@@ -11,8 +11,10 @@ OS_FTP_USER=${OS_FTP_USER:-ftp}
 [[ ! -d "$DATA_DIR" ]] && mkdir -vp "$DATA_DIR"
 chown -v $OS_FTP_USER:`id -g $OS_FTP_USER` "$DATA_DIR"
 
-[[ -n "$FTP_USER" ]] && \
+if [[ -n "$FTP_USER" ]]; then
     ftpasswd --passwd --uid `id -u $OS_FTP_USER` --gid `id -g $OS_FTP_USER` --home "$DATA_DIR" --name "$FTP_USER" --shell /bin/false --stdin "$FTP_PASSWORD"
+    smbpasswd -a "$FTP_USER" -s "$FTP_PASSWORD"
+fi
 
 echo $LINE
 echo 'Adding empty smbpasswd for ftp user, needed with Windows 10 "secure" connection:'

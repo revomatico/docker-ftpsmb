@@ -1,6 +1,6 @@
 # docker-ftpsmb
 > Docker image from base Ubuntu 18.04 that contains basic firewall (ufw), ftp (proftpd) and samba (v4) servers.
-> The purpose is an anonymoius ftp/smb server to store and distribute some files.
+> The purpose is an anonymous ftp/smb server to store and distribute some files.
 
 # Environemtn variables
 - `OS_FTP_USER` - default: `ftp`, specify a real os user to own the ftp directory
@@ -20,6 +20,9 @@
 2. These sample configs are mapped at container runtime, can be loaded as configmaps in Kubernetes as well.
 
 # Release notes
+- 2019-08-03 [1.0.3]:
+    - Added samba user using FTP_USER and FTP_PASSWORD
+    - In the sample `etc/samba/smb.conf`, guests now are read only and the designated FTP_USER can write
 - 2019-07-26 [1.0.2]:
     - Added FTP_USER and FTP_PASSWORD env vars to allow creation of a virtual ftp user, if not specified anonymous will be the default
     - Added FIREWALL_ENABLED, that if `true` will enable ufw, otherwise disable at container start
