@@ -12,8 +12,12 @@ OS_FTP_USER=${OS_FTP_USER:-ftp}
 chown -v $OS_FTP_USER:`id -g $OS_FTP_USER` "$DATA_DIR"
 
 if [[ -n "$FTP_USER" ]]; then
-    ftpasswd --passwd --uid `id -u $OS_FTP_USER` --gid `id -g $OS_FTP_USER` --home "$DATA_DIR" --name "$FTP_USER" --shell /bin/false --stdin "$FTP_PASSWORD"
-    smbpasswd -a "$FTP_USER" -s "$FTP_PASSWORD"
+    ftpasswd --passwd --uid `id -u $OS_FTP_USER` --gid `id -g $OS_FTP_USER` --home "$DATA_DIR" --name "$FTP_USER" --shell /bin/false --file /etc/proftpd/ftpd.passwd --stdin <<< "$FTP_PASSWORD"
+    echo $LINE
+    smbpasswd -D1 -a "$FTP_USER" -s <<!
+$FTP_PASSWORD
+$FTP_PASSWORD
+!
 fi
 
 echo $LINE
