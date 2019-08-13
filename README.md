@@ -23,6 +23,7 @@
 - 2019-08-13 [1.0.4]:
     - Added dedicated SMB_USER/SMB_PASSWORD env variables, alongside FTP_USER/FTP_PASSWORD
     - Set write group to a default @sambashare
+    - Set samba log to /var/log/samba.log instead of syslog
 - 2019-08-03 [1.0.3]:
     - ~~Added samba user using FTP_USER and FTP_PASSWORD~~
     - In the sample `etc/samba/smb.conf`, guests now are read only and the designated FTP_USER can write

@@ -44,4 +44,4 @@ done
 echo $LINE
 
 ## Output agent logs
-tail -F /var/log/proftpd/xferlog -F /var/log/proftpd/proftpd.log
+tail -F /var/log/proftpd/xferlog -F /var/log/proftpd/proftpd.log -F /var/log/samba.log
