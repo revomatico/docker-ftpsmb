@@ -22,8 +22,9 @@
 # Release notes
 - 2019-08-13 [1.0.4]:
     - Added dedicated SMB_USER/SMB_PASSWORD env variables, alongside FTP_USER/FTP_PASSWORD
+    - Set write group to a default @sambashare
 - 2019-08-03 [1.0.3]:
-    - Added samba user using FTP_USER and FTP_PASSWORD
+    - ~~Added samba user using FTP_USER and FTP_PASSWORD~~
     - In the sample `etc/samba/smb.conf`, guests now are read only and the designated FTP_USER can write
 - 2019-07-26 [1.0.2]:
     - Added FTP_USER and FTP_PASSWORD env vars to allow creation of a virtual ftp user, if not specified anonymous will be the default
