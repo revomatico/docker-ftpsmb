@@ -11,16 +11,23 @@ OS_FTP_USER=${OS_FTP_USER:-ftp}
 [[ ! -d "$DATA_DIR" ]] && mkdir -vp "$DATA_DIR"
 chown -v $OS_FTP_USER:`id -g $OS_FTP_USER` "$DATA_DIR"
 
-if [[ -n "$FTP_USER" ]]; then
+## Add FTP user
+[[ -n "$FTP_USER" ]] && \
     ftpasswd --passwd --uid `id -u $OS_FTP_USER` --gid `id -g $OS_FTP_USER` --home "$DATA_DIR" --name "$FTP_USER" --shell /bin/false --file /etc/proftpd/ftpd.passwd --stdin <<< "$FTP_PASSWORD"
-    echo $LINE
-    smbpasswd -D1 -a "$FTP_USER" -s <<!
-$FTP_PASSWORD
-$FTP_PASSWORD
+
+echo $LINE
+
+## Add SMB user
+if [[ -n "$SMB_USER" ]]; then
+    smbpasswd -D1 -a "$SMB_USER" -s <<!
+$SMB_PASSWORD
+$SMB_PASSWORD
 !
+    usermod -aG sambashare $SMB_USER
 fi
 
 echo $LINE
+
 echo 'Adding empty smbpasswd for ftp user, needed with Windows 10 "secure" connection:'
 smbpasswd -a $OS_FTP_USER -s <<!
 

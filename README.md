@@ -20,6 +20,8 @@
 2. These sample configs are mapped at container runtime, can be loaded as configmaps in Kubernetes as well.
 
 # Release notes
+- 2019-08-13 [1.0.4]:
+    - Added dedicated SMB_USER/SMB_PASSWORD env variables, alongside FTP_USER/FTP_PASSWORD
 - 2019-08-03 [1.0.3]:
     - Added samba user using FTP_USER and FTP_PASSWORD
     - In the sample `etc/samba/smb.conf`, guests now are read only and the designated FTP_USER can write
