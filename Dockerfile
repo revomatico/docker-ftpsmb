@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 MAINTAINER Cristian Chiru <cristian.chiru@revomatico.com>
 
-ENV PACKAGES="proftpd samba mc kmod net-tools rsyslog ufw"
+ENV PACKAGES="proftpd samba mc kmod net-tools rsyslog ufw cron"
 
 COPY docker-entrypoint.sh /
 
