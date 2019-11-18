@@ -37,7 +37,7 @@ smbpasswd -a $OS_FTP_USER -s <<!
 echo $LINE
 
 ## Start services
-for s in rsyslog smbd proftpd; do
+for s in cron rsyslog smbd proftpd; do
     /etc/init.d/$s start
 done
 

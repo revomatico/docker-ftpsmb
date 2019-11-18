@@ -20,6 +20,8 @@
 2. These sample configs are mapped at container runtime, can be loaded as configmaps in Kubernetes as well.
 
 # Release notes
+- 2019-11-19 [1.0.6]:
+    - Start cron service as well
 - 2019-08-14 [1.0.5]:
     - Added cron package
 - 2019-08-13 [1.0.4]:
